@@ -10,18 +10,14 @@
     ssh-keygen -t rsa -N "" -f /home/ubuntu/.ssh/id_rsa
   Private key will be generated in id_rsa and public key in id_rsa.pub
 
-5. Copy your private AWS key to ~/.ssh/my.key (or whatever name you want to use)
+5. Copy your private AWS key to ~/.ssh/my.key
     cp /home/ubuntu/.ssh/id_rsa ~/.ssh/my.key
     	
 6. Make that file only usable by the owner:
     chmod 600 .ssh/my.key
-
-7. Add private key to other instance
-    ssh -k  .ssh/my.key
-    ssh -A ubuntu@10.0.0.X
 	
 8. Add the public key to the authorized keys in the other instance:
-    cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/my.key ubuntu@10.0.0.X "cat >> ~/.ssh/authorized_keys"
+    cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/my.key ubuntu@***.**.**.** "cat >> ~/.ssh/authorized_keys"
 
 9. You can now ssh into the other instance without a password:
-ssh 10.0.0.X
+ssh ***.**.**.**
